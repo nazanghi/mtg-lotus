@@ -1,5 +1,3 @@
-const {response } = require('express')
-const Card = require('../database/models/Card')
 const {Deck, MTGCard, Cart} = require('../database/schema')
 
 const GetCard = async (request, response) => {

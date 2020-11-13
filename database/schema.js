@@ -1,7 +1,7 @@
 const { model } = require('mongoose')
 const UserModel = require('./models/User')
 const CartModel = require('./models/Cart')
-const DeckModel = require('./models/DeckModel')
+const DeckModel = require('./models/Deck')
 const MTGCardModel = require('./models/MTGCard')
 
 const User = model('users', UserModel)

@@ -10,9 +10,6 @@ module.exports = new Schema (
             type: String,
             required: false
         },
-        cards: { 
-            type: Array,
-            required: true
-        }
+        cards: []
     }, {timestamps: true}
 )

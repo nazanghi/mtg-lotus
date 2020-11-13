@@ -10,7 +10,15 @@
 const faker = require('faker')
 const connection = require('./connection')
 const { Types } =require('mongoose')
-const { Card } = require('./schema')
+const { User, MTGCard } = require('./schema')
+
+const users = new Array(50).fill().map(()=> ({
+    _id: Types.ObjectId(),
+    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+    email: faker.internet.email(),
+    password_digest: faker.random.word()
+}))
+
 
 const cards= new Array(500).fill().map(() => ({
     _id: Types.ObjectId(),
@@ -20,7 +28,8 @@ const cards= new Array(500).fill().map(() => ({
 
 const seed = async () => {
     await connection.connect
-    await Card.insertMany(cards)
+    await User.insertMany(users)
+    await MTGCard.insertMany(cards)
     await connection.disconnect 
     process.exit()
 }

@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 //Initializes Middleware
 
-app.use('/', (request, response) => {
+app.get('/', (request, response) => {
     response.send('Home route!')
 })
 

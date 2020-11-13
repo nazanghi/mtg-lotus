@@ -2,9 +2,9 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const helmet = require('helmet') //not sure what this means yet
+// const helmet = require('helmet') //not sure what this means yet
 const connection = require('./database/connection')
-
+// const AppRouter = require('./routes/AppRouter')
 const PORT = process.env.PORT || 7777
 const app = express()
 

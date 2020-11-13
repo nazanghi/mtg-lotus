@@ -6,7 +6,7 @@ const GetAllDecks = async (request, response) => {
     const offset = page ==='1' ? 0 : Math.floor(parseInt(page) *parseInt(limit))
     .limit(parseInt(limit))
     .skip(offset)
-    const displayDecks = await Decks.find()
+    const displayDecks = await Deck.find()
     response.send({results: displayDecks.length, decks})
 }
 
@@ -28,7 +28,7 @@ const CreateDeck = async(request, response) => {
 }
 
 const RenameDeck = async (request, response) => {
-    await Decks.findByIdAndUpdate(
+    await Deck.findByIdAndUpdate(
         request.params.deck_id,
         {
             ...request.body
@@ -40,7 +40,7 @@ const RenameDeck = async (request, response) => {
 }
 
 const ChangeDescription = async (request, response) => {
-    await Decks.findByIdAndUpdate(
+    await Deck.findByIdAndUpdate(
         request.params.deck_id,
         {
             ...request.body
@@ -51,7 +51,7 @@ const ChangeDescription = async (request, response) => {
 }
 
 const DeleteDeck = async (request, response) => {
-    await Card.deleteMany({ _id: {$in: deck.cards}})
+    await MTGCard.deleteMany({ _id: {$in: deck.cards}})
     await Deck.findByIdAndDelete(request.params.deck_id)
     response.send({message: `Deck Deleted`})
 }

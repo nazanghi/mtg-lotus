@@ -1,9 +1,8 @@
-const { User, Decks, Cart } = require('../database/schema')
+const Router = require('express').Router()
+const UserController = require('../controllers/UserController')
 
-const GetProfile = async (request, response) => {
-    try {
-        const user = await User.findById(request.params.user_id).select('_id name')
-    }
-}
+Router.get('/:user_id', UserController.GetProfile)
+Router.post('/register', UserController.CreateUser)
+Router.post('/login', UserController.SignInUser)
 
-//still working here
+module.exports = Router

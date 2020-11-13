@@ -7,3 +7,5 @@ Router.post('/:user_id', DeckController.CreateDeck)
 Router.put('/:deck_id', DeckController.RenameDeck)
 Router.put('/:deck_id', DeckController.ChangeDescription)
 Router.delete('/:deck_id', DeckController.DeleteDeck)
+
+module.exports = Router

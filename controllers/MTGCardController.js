@@ -3,12 +3,12 @@ const Card = require('../database/models/Card')
 const {Deck, MTGCard, Cart} = require('../database/schema')
 
 const GetCard = async (request, response) => {
-    const card = await MTGCard.findById(request.params.cards_id).select('id_name')
+    const card = await MTGCard.findById(request.params.card_id).select('id_name')
     response.send(card)
 }
 
 const AddCardToDeck = async (request, response) => {
-    const newCard = await MTGCard.findById(request.params.cards_id).select('id_name')
+    const newCard = await MTGCard.findById(request.params.card_id).select('id_name')
     await Deck.update(
         { _id: request.params.deck_id },
         {
@@ -21,9 +21,9 @@ const AddCardToDeck = async (request, response) => {
 }
 
 const AddLooseCard = async (request, response) => {
-    const looseCard = await MTGCard.findById(request.params.cards_id).select('id_name')
+    const looseCard = await MTGCard.findById(request.params.card_id).select('id_name')
     await Cart.update(
-        { _id: request.params.cards_id },
+        { _id: request.params.card_id },
         {
             $push: {
                 items: looseCard
@@ -34,18 +34,33 @@ const AddLooseCard = async (request, response) => {
 }
 
 const RemoveCard = async (request, response) => {
-    await MTGCard.deleteOne({id: request.params.cards_id})
+    await MTGCard.deleteOne({id: request.params.card_id})
     const updatedDeck = await Deck.findByIdAndUpdate(
         request.params.deck_id,
-        { $pull: { cards: {_id: request.params.cards_id } } },
+        { $pull: { cards: {_id: request.params.card_id } } },
         { upsert: true, new: true}
     )
     response.send(updatedDeck)   
+}
+
+const GetAllCards = async (request, response) => {
+    try {
+        const { page, limit } = request.query
+        const offset = 
+            page === '1' ? 0 : Math.floor(parseInt(page) * parseInt(limit))
+        const cards = await MTGCard.find()
+        .limit(parseInt(limit))
+        .skip(offset)
+    response.send(cards)
+    } catch (error) {
+        throw error
+    }
 }
 
 module.exports = {
     GetCard,
     AddCardToDeck,
     RemoveCard,
-    AddLooseCard
+    AddLooseCard,
+    GetAllCards
 }

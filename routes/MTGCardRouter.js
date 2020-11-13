@@ -1,5 +1,4 @@
 const Router = require('express').Router()
-const { AddLooseCard } = require('../controllers/MTGCardController')
 const MTGCardController = require('../controllers/MTGCardController')
 
 Router.get('/:card_id', MTGCardController.GetCard)

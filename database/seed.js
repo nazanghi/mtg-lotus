@@ -11,6 +11,7 @@ const faker = require('faker')
 const connection = require('./connection')
 const { Types } =require('mongoose')
 const { User, MTGCard } = require('./schema')
+const bcrypt = require('bcrypt')
 
 const users = new Array(50).fill().map(()=> ({
     _id: Types.ObjectId(),
@@ -22,16 +23,22 @@ const users = new Array(50).fill().map(()=> ({
 
 const cards= new Array(500).fill().map(() => ({
     _id: Types.ObjectId(),
-    title: faker.random.words(Math.floor(Math.random()*5)),
-    rules_text: faker.random.words(Math.floor(Math.random()*15))
+    title: `cool`,
+    // title: faker.random.words(Math.floor(Math.random()*5)),
+    // rules_text: faker.random.words(Math.floor(Math.random()*15))
+    rules_text: `yeah sick`
 }))
 
 const seed = async () => {
+try {
     await connection.connect
     await User.insertMany(users)
     await MTGCard.insertMany(cards)
-    await connection.disconnect 
-    process.exit()
+    await connection.disconnect
+    } catch (error) {
+        console.log(error)
+    } finally {
+        process.exit()
+    }
 }
-
 seed()

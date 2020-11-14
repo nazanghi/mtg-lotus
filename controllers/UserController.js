@@ -2,7 +2,7 @@ const { User, Cart } = require('../database/schema')
 
 const GetProfile = async(request, response) => {
     try {
-        const user = await User.findById(request.params.user_id).isSelected('id_name')
+        const user = await User.findById(request.params.user_id)
         const cart = await Cart.find({ user_id: request.params.user_id })
         response.send ({ user, cart})
     } catch (error) {

@@ -16,7 +16,7 @@ export default ({ children }) => {
                         </div>
                         <div className="cl-right flex-col">
                             <div className="path-wrapper">
-                                <img src={} alt =""/>
+                                {/* <img src={} alt =""/> */}
                             </div>
                         </div>
                     
@@ -24,7 +24,7 @@ export default ({ children }) => {
                 </div>
             </div>
             <div className="image-wrapper">
-                <img src={} alt=""/>
+                {/* <img src={} alt=""/> */}
             </div>
             </section>
             <section className = "right flex-sm">

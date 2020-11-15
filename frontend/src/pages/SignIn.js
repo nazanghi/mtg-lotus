@@ -31,8 +31,8 @@ export default class SignIn extends Component {
     render() {
         const {email, password } = this.state
         return (
-            <div className="signin somethingforflexgrid">
-                <form className ="somethingforflexgrid" onSubmit={this.handleSubmit}>
+            <div className="signin flex-col">
+                <form className ="flex-col" onSubmit={this.handleSubmit}>
                     <TextInput 
                         placeholder="Your Email"
                         name="email"

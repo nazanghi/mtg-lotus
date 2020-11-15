@@ -7,3 +7,7 @@ export default () => {
         <div></div>
     )
 }
+
+//This whole page needs to be fleshed out but realistically
+//I think it's the last thing I'll do because I've got the otehr stuff that needs 
+//to be worked out

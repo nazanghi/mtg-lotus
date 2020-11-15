@@ -9,3 +9,5 @@ Router.put('/:deck_id', DeckController.ChangeDescription)
 Router.delete('/:deck_id', DeckController.DeleteDeck)
 
 module.exports = Router
+
+//ShuffleDeck will be a get function

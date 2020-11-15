@@ -14,3 +14,6 @@ module.exports = {
 }
 
 // need to add more functions for this one 
+
+//ok fuck the cart officially
+//I'm just going to have exportable decks

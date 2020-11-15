@@ -56,6 +56,8 @@ const DeleteDeck = async (request, response) => {
     response.send({message: `Deck Deleted`})
 }
 
+//need to make ShuffleDeck
+
 module.exports ={
     GetDeck,
     CreateDeck,

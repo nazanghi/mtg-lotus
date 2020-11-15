@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet') //not sure what this means yet
 const connection = require('./database/connection')
 const AppRouter = require('./routes/AppRouter')
+
 const PORT = process.env.PORT || 7777
 const app = express()
 
@@ -17,9 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //Initializes Middleware
 
 app.get('/', (request, response) => {
-    response.send('Home route!')
+    response.send({message: 'Home route!'})
 })
-
 app.use('/api', AppRouter)
 
 app.listen(PORT, async () => {

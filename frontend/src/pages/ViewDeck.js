@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { __GetSingleDeck } from '../services/DeckServices'
-import '../styles/DeckView.css' //gotta make this
+import '../styles/DeckView.css'
 export default class ViewDeck extends Component {
     constructor() {
         super ()

@@ -23,8 +23,8 @@ export default class Signup extends Component {
         e.preventDefault()
         try {
             await __RegisterUser(this.state)
-            this.props.history.push('/login')
-        } catch (error) {throw error, console.log(error)}
+            this.props.history.push('/register')
+        } catch (error) {throw error}
     }
 
     render() {

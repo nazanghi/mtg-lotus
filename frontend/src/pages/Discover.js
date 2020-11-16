@@ -36,10 +36,7 @@ export default class Discover extends Component {
             <div className="discover wrapper">
                 <h2>View All Cards</h2>
                 <section className="content-wrapper">
-                    {cards.length 
-                    ? (
-                        <h3>No matching cards found!</h3>
-                        ) : (
+                    {
                             cards.map((card)=> (
                                 <Card
                                     key={card._id}
@@ -56,12 +53,13 @@ export default class Discover extends Component {
                                             </div> 
                                         </div>
                                     </div>
-                                    {/* <img src={card._art} alt="" /> */}
-                                    <p> placeholder for an image </p>
+                                    <img src={card.image_source} alt="dummy card using faker" />
+                                    
                                 </Card>
+                               
                             ))
                         //this is really more for when filter functionality is incorporated
-                    )}
+                    }
                     <button onClick = {this.incrementPage}>Get More Cards</button>
                 </section>
             </div>

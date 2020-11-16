@@ -5,7 +5,7 @@ export default ({ authenticated, children, component: Component, ...rest }) =>
     authenticated === true 
     ?   (
         <Route {...rest} component={Component}>
-            {console.log(authneticated)}
+            {console.log(authenticated)}
         </Route>
     ) : (
         <Redirect to="/" />

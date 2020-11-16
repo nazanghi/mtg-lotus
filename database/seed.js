@@ -24,9 +24,9 @@ const users = new Array(50).fill().map(()=> ({
 const cards= new Array(500).fill().map(() => ({
     _id: Types.ObjectId(),
     title: `cool`,
+    rules_text: `yeah sick`
     // title: faker.random.words(Math.floor(Math.random()*5)),
     // rules_text: faker.random.words(Math.floor(Math.random()*15))
-    rules_text: `yeah sick`
 }))
 
 const seed = async () => {

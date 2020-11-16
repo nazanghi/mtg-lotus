@@ -9,7 +9,7 @@ const DisplayCart = async (request, response) => {
 
 
 module.exports = {
-    DisplayCart,
+    DisplayCart
 
 }
 

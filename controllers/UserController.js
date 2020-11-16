@@ -1,4 +1,6 @@
 const { User, Cart } = require('../database/schema')
+const { generatePassword } = require('../middleware/PasswordHandler')
+const jwt = require('jsonwebtoken')
 
 const GetProfile = async(request, response) => {
     try {
@@ -14,7 +16,7 @@ const CreateUser = async (request, response) => {
     try {
         const body = request.body
         const password_digest = await generatePassword(body.password)
-        const User = new User ({
+        const user = new User ({
             name: body.name,
             email: body.email,
             password_digest

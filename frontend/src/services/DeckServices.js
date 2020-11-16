@@ -3,7 +3,7 @@ import ApiClient from './ApiClient'
 export const __GetDecks = async (page, limit) => {
     try {
         const response= await ApiClient.get(
-            `/posts?page=${page ||1}&limit=${limit || 10 }`
+            `/decks?page=${page ||1}&limit=${limit || 10 }`
         )
         return response.data
     } catch (error) {throw error}

@@ -8,14 +8,14 @@ class Router extends Component {
     constructor () {
         super ()
         this.state = {
-            // authenticated: false,
+            authenticated: false,
             currentUser: null,
             pageLoading: true
         }
     }
 
     componentDidMount () {
-        this.verifyTokenValid()
+        // this.verifyTokenValid()
         this.setState({pageLoading: false})
     }
 
@@ -51,7 +51,7 @@ class Router extends Component {
                 {this.state.pageLoading ? (
                     <h4>Getting over Summoning Sickness...</h4>
                 ) : (
-                    // <Switch>
+                    <Switch>
                         <Route 
                             exact path = "/"
                             component = {() => (
@@ -60,7 +60,7 @@ class Router extends Component {
                                 </LandingPage>
                             )}
                         />
-                    // </Switch>
+                     </Switch>
                 )
                 }
             </main>
@@ -68,4 +68,4 @@ class Router extends Component {
     }
 }
 
-export default Router
+export default withRouter(Router)

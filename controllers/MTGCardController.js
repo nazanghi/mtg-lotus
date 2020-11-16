@@ -6,8 +6,8 @@ const GetCard = async (request, response) => {
 }
 
 const AddCardToDeck = async (request, response) => {
-    const newCard = await MTGCard.findById(request.params.card_id).select('id_name')
-    await Deck.update(
+    const newCard = await MTGCard.findById(request.params.card_id)
+    await Deck.findByIdAndUpdate(
         { _id: request.params.deck_id },
         {
             $push: {

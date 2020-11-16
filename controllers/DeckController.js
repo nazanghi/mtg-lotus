@@ -1,5 +1,6 @@
 const express = require('express')
-const {Deck, MTGCard} = require('../database/schema')
+const { useParams } = require('react-router-dom')
+const {Deck, MTGCard, User} = require('../database/schema')
 
 const GetAllDecks = async (request, response) => {
     const {page, limit } = request.query
@@ -11,7 +12,7 @@ const GetAllDecks = async (request, response) => {
 }
 
 const GetDeck = async (request, response) => {
-    const deck = await Deck.findById(request.params.deck_id).select('id_name')
+    const deck = await Deck.findById(request.params.deck_id).populate('cards')
     response.send(deck)
     }
 
@@ -24,6 +25,12 @@ const CreateDeck = async(request, response) => {
         cards: []
     })
     deck.save()
+    await User.findByIdAndUpdate(
+        request.params.user_id, 
+            { $push: {decks: deck}
+        }
+    )
+    //user_id .decks.push(deck)
     response.send(deck)
 }
 

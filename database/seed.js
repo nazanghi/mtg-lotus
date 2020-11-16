@@ -3,9 +3,9 @@
 // This may be a place where I put all my API shit though
 
 // const SCRYFALL = `https://api.scryfall.com`
-// const TCGKEY = `8f418e8e-ea65-4e0c-871d-79fc4c0c93e1`
+// const TCGKEY = (deleted this so that I don't push it to github, lol)
 //commented out so I can just test things out
-
+// import axios from 'axios'
 
 const faker = require('faker')
 const connection = require('./connection')
@@ -21,13 +21,23 @@ const users = new Array(50).fill().map(()=> ({
 }))
 
 
-const cards= new Array(500).fill().map(() => ({
-    _id: Types.ObjectId(),
-    title: `cool`,
-    rules_text: `yeah sick`
-    // title: faker.random.words(Math.floor(Math.random()*5)),
-    // rules_text: faker.random.words(Math.floor(Math.random()*15))
-}))
+// const cards= new Array(500).fill().map(() => ({
+//     _id: Types.ObjectId(),
+//     // title: `cool`,
+//     // rules_text: `yeah sick`
+//     title: faker.random.words(Math.floor(Math.random()*5)),
+//     rules_text: faker.random.words(Math.floor(Math.random()*15))
+// }))
+
+let cards = []
+    for (let i=0; i < 100; i++) {
+        let newTestCard= {
+            _id: Types.ObjectId(),
+            title: faker.random.word(Math.floor(Math.random()*5)),
+            rules_text: faker.random.words(Math.floor(Math.random()*15))
+        }
+        cards.push(newTestCard)
+    }
 
 const seed = async () => {
 try {

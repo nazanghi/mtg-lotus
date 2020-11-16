@@ -22,6 +22,10 @@ export default class ViewCards extends Component {
         } catch (error) {throw error}
     }
 
+
+    //the big thing I need to do here is set up how the cards are going to be arranged
+    //which is going to be in a bunch of divs (and spans? maybe?)
+    //but then I gotta coordinate it with the css
     render() {
         const {cards} = this.state
         if (this.state.cards) {

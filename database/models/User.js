@@ -17,7 +17,10 @@ module.exports = new Schema (
             required: true
         },
         cart: [],
-        decks: []
+        decks: [{
+            type: Schema.Types.ObjectId,
+            ref: 'decks'
+        }]
     }, 
     {timestamps: true}
 )

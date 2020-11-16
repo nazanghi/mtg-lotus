@@ -6,7 +6,7 @@ import LandingPage from '../pages/LandingPage'
 import SignUp from '../pages/SignUp'
 import Layout from '../components/Layout'
 import Discover from '../pages/Discover'
-import SignInUser from '../SignIn'
+import SignInUser from '../pages/SignIn'
 
 //I need to add more imports as it goes along and I have more things in this
 
@@ -75,7 +75,7 @@ class Router extends Component {
                             )}
                         />
                         <Route 
-                            path = "/Discover"
+                            path = "/discover"
                             component = {(props) => (
                                 <Layout
                                     currentUser={this.state.currentUser}
@@ -87,7 +87,7 @@ class Router extends Component {
                         />
                         <Route 
                             exact path = "/login"
-                            component = {() => (
+                            component = {(props) => (
                                 <LandingPage>
                                     <SignInUser 
                                         toggleAuthenticated={this.toggleAuthenticated}

@@ -27,7 +27,7 @@ export default class ViewDeck extends Component {
                     <div className="content-wrapper flex-row">
                         <div className="left-content col-1">
                             <div className="image-wrapper">
-                                {/* <img src={deck.featured_art} alt ={`${deckName}`} /> */}
+                                {/* <img src={not sure what to have as an image} alt ={`${deckName}`} /> */}
                                 <p>this is a placeholder, you will have an image here</p>
                             </div>
                         </div>

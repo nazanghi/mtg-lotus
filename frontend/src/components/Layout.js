@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from './Nav'
 
-export default ({ children, authenticated, currentUser }) => {
+export default ({ children, authenticated, currentUser }) => (
     <div>
         <Nav 
             authenticated = {authenticated}
@@ -10,4 +10,4 @@ export default ({ children, authenticated, currentUser }) => {
         />
         {children}
     </div>
-}
+)

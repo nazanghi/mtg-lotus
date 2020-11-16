@@ -7,6 +7,6 @@ const MTGCardModel = require('./models/MTGCard')
 const User = model('users', UserModel)
 const Cart = model('Cart', CartModel)
 const Deck = model('decks', DeckModel)
-const MTGCard = model('MTGCard', MTGCardModel)
+const MTGCard = model('MTGCards', MTGCardModel)
 
 module.exports = { User, Cart, Deck, MTGCard}

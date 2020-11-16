@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom' //will be used to add a card to a deck
 import {__GetCards} from '../services/CardServices'
 import '../styles/ViewCards.css'
 

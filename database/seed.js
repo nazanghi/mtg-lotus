@@ -12,6 +12,7 @@ const connection = require('./connection')
 const { Types } =require('mongoose')
 const { User, MTGCard } = require('./schema')
 const bcrypt = require('bcrypt')
+const CARDART = `https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg`
 
 const users = new Array(50).fill().map(()=> ({
     _id: Types.ObjectId(),
@@ -26,15 +27,17 @@ const users = new Array(50).fill().map(()=> ({
 //     // title: `cool`,
 //     // rules_text: `yeah sick`
 //     title: faker.random.words(Math.floor(Math.random()*5)),
-//     rules_text: faker.random.words(Math.floor(Math.random()*15))
+//     rules_text: faker.random.words(Math.floor(Math.random()*15)),
+//     MTGCardArt: CARDART
 // }))
 
 let cards = []
     for (let i=0; i < 100; i++) {
         let newTestCard= {
             _id: Types.ObjectId(),
-            title: faker.random.word(Math.floor(Math.random()*5)),
-            rules_text: faker.random.words(Math.floor(Math.random()*15))
+            title: faker.lorem.sentence(),
+            rules_text: faker.lorem.paragraph(),
+            image_source: faker.random.image()
         }
         cards.push(newTestCard)
     }
@@ -44,7 +47,6 @@ try {
     await connection.connect
     await User.insertMany(users)
     await MTGCard.insertMany(cards)
-    await connection.disconnect
     } catch (error) {
         console.log(error)
     } finally {

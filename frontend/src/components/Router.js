@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
+import { SignInUser } from '../../../controllers/UserController'
 import Home from '../pages/Home'
 import LandingPage from '../pages/LandingPage'
 //I need to add more imports as it goes along and I have more things in this
@@ -60,7 +61,35 @@ class Router extends Component {
                                 </LandingPage>
                             )}
                         />
+                        <Route 
+                            path = "/register"
+                            component = {(props) => (
+                                <LandingPage>
+                                    <SignUp {...props}/>
+                                </LandingPage>
+                            )}
+                        />
+                        <Route 
+                            path = "/Discover"
+                            component = {(props) => (
+                                <Layout
+                                    currentUser={this.state.currentUser}
+                                    authenticated={this.state.authenticated}
+                                >
+                                <Discover {...props} />
+                                </Layout>
+                            )}
+                        />
+                        <Route 
+                            exact path = "/"
+                            component = {() => (
+                                <LandingPage>
+                                    <Home/>
+                                </LandingPage>
+                            )}
+                        />
                      </Switch>
+                    
                 )
                 }
             </main>

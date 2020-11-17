@@ -7,9 +7,11 @@ import SignUp from '../pages/SignUp'
 import Layout from '../components/Layout'
 import Discover from '../pages/Discover'
 import SignInUser from '../pages/SignIn'
-import {__CheckSession } from '../services/UserServices'
+import {__CheckSession, __GetProfile } from '../services/UserServices'
 import { __GetDecks } from '../services/DeckServices'
 import Profile from '../pages/Profile'
+import CreateDeck from '../pages/CreateDeck'
+
 
 //should import ViewAllDecks either here or in profile
 //I feel like here because I want to have it so you can view all your decks when you log in and create a deck
@@ -22,7 +24,9 @@ class Router extends Component {
             authenticated: false,
             currentUser: null,
             pageLoading: true,
-            chosenDeck: null
+            chosenDeck: null,
+            decks: [],
+            deckFetchError: false
         }
     }
 
@@ -31,7 +35,7 @@ class Router extends Component {
         this.setState({pageLoading: false})
         this.chooseDeck()
     }
-
+    
     verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
         if (token) {
@@ -45,11 +49,20 @@ class Router extends Component {
                     },
                     () => this.props.history.push('/') //this is the page it will go to
                 )
+                this.getDecks()
             } catch (error) {
                 this.setState({ currentUser: null, authenticated: false })
                 localStorage.clear()
             }
         }
+    }
+
+    getDecks = async () => {
+        try {
+            console.log(this.props)
+            const profileData = await __GetProfile(this.state.currentUser._id)
+            this.setState({ decks: profileData.decks })
+        } catch(error) {console.log(error)}
     }
 
     chooseDeck = async () => {
@@ -61,7 +74,7 @@ class Router extends Component {
                     {
                         chosenDeck: chosenDeck.deck
                     },
-                    () => this.props.history.push('/')
+                    () => this.props.history.push('/Discover')
                 )
         } catch(error){throw error}
     }
@@ -122,6 +135,7 @@ class Router extends Component {
                                 <LandingPage>
                                     <Profile
                                         {...props}
+                                        decks={this.state.decks}
                                     />
                                 </LandingPage>
                             )}

@@ -26,6 +26,12 @@ export default class ViewCards extends Component {
     //the big thing I need to do here is set up how the cards are going to be arranged
     //which is going to be in a bunch of divs (and spans? maybe?)
     //but then I gotta coordinate it with the css
+
+    //really I should just take this from where I have them displayed on discover
+
+
+    //can I maybe put this into my ViewDeck display, 
+    //so that I can have that as the way to display the cards that are in the deck?
     render() {
         const {cards} = this.state
         if (this.state.cards) {
@@ -34,8 +40,7 @@ export default class ViewCards extends Component {
                     <div className = "content-wrapper flex-row">
                         <div className = "left-content col-1">
                             <div className = "image-wrapper">
-                                {/* <img src = {} alt ="" /> */}
-                                <p>placeholder for an image</p>
+
                             </div>
                         </div>
                     </div>

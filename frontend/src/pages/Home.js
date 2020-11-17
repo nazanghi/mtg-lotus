@@ -15,7 +15,7 @@ export default () => {
                     />
                 </form>
                 <div className="discover flex-col">
-                    <h2>Your Decks</h2>
+                    <p>this would be dope af if I could have it just phasing random cards in right here</p>
                     <section className="card-wrapper flex-row">
                         {/* <Card>
                             <div className="mask flex-col">

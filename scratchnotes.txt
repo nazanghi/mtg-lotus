@@ -11,3 +11,30 @@ Diagnose error in DeckController>GetAllDecks
 props.history.push(request.params.deck_id)
 
 gotta grab the deck Id to then pass on for when I need to add cards to it 
+
+
+
+
+    getDecks = async () => {
+        try {
+            console.log(this.props)
+            const profileData = await __GetProfile(this.props.currentUser._id)
+            this.setState({ decks: profileData.decks })
+        } catch(error) {console.log(error)}
+    }
+    
+    deleteDeck = async (id) => {
+        try{
+            const decksToKeep = this.state.decks.filter((deck) => deck._id !==id)
+            this.setState({ decks: decksToKeep})
+            await __DeleteDeck(id)
+        } catch (error) {console.log(error)}
+    }
+
+    selectDeck = async() => {
+        try {
+            const selectedDeck= this.state.decks.findById() //need to tweak
+            this.setState({chosenDeck: selectedDeck})
+        } catch(error){throw error}
+    }
+

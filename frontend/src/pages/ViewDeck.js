@@ -19,6 +19,7 @@ export default class ViewDeck extends Component {
     getDeck = async() => {
         try {
             const deck = await __GetSingleDeck(this.props.match.params.deck_id)
+            console.log(`checking deck singular `, deck)
         } catch (error) {throw error, console.log(error)}
     }
 
@@ -43,7 +44,7 @@ export default class ViewDeck extends Component {
                         <div className="left-content col-1">
                             <div className="image-wrapper">
                                 {/* <img src={not sure what to have as an image} alt ={`${deckName}`} /> */}
-                                <p>this is a placeholder, you will have an image here</p>
+                                <p> it displays!</p>
                             </div>
                         </div>
                         {/* I should map through the selected deck and return the cards in it as an unordered list 
@@ -67,3 +68,5 @@ export default class ViewDeck extends Component {
 }
 
 //similar to using .map to add the button to the cards, I can do it here to remove the cards
+
+//when I want to do an edit deck, I can take the code I have for creating a deck and repurpose it

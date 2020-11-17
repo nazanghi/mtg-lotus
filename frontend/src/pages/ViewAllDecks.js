@@ -17,6 +17,7 @@ export default class ViewAllDecks extends Component {
     getAllDecks = async () => {
         try {
             const decks = await __GetDecks()
+            console.log(`checking decks plural `, decks)
             this.setState({decks: decks})
 
         } catch(error){throw error}

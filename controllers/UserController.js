@@ -26,7 +26,7 @@ const CreateUser = async (request, response) => {
     } catch (error) {
         throw error
     }
-}
+} 
 
 const SignInUser = async (request, response, next) => {
     console.log(`SignInUser${request}`)
@@ -46,7 +46,6 @@ const SignInUser = async (request, response, next) => {
             response.locals.payload = payload 
             console.log('hits payload response', response)
             return next()
-            
         }
         response.status(401).send({ message: `Wrong Password, try again.`})
     } catch (error) {

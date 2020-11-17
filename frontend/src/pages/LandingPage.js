@@ -28,7 +28,6 @@ export default ({ children }) => {
             </div>
             </section>
             <section className = "right flex-sm">
-                <Nav/>
                 {children}
             </section>
         </div>

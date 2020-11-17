@@ -68,3 +68,5 @@ module.exports = {
     SignInUser,
     RefreshSession
 }
+
+//create a checkSession

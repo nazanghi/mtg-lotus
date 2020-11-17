@@ -7,8 +7,7 @@ export default class CreateDeck extends Component {
         super()
         this.state = {
             name: '',
-            description: '',
-            cards: []
+            description: ''
         }
     }
 
@@ -19,8 +18,9 @@ export default class CreateDeck extends Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await __CreateDeck(this.state, this.props.currentUser._id)
-            this.props.history.push('/Discover') //I think this will send me to the browse cards page
+            const deck = await __CreateDeck(this.state, this.props.currentUser._id)
+            this.props.addDeck(deck)
+            this.props.toggleCreateDeck(false)
         } catch(error){throw error}
     }
 

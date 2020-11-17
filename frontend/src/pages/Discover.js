@@ -29,10 +29,7 @@ export default class Discover extends Component {
 
     addCardToDeck = async (card) => {
         try {
-            const deck = await __GetSingleDeck(deck) //lil fuzzy on that last part
-        this.setState(
-            (prevState) => ({deck: [...prevState.deck, card]})
-        )
+            this.props.addCardToDeck(card)            
         } catch (error){throw error}
     }
     incrementPage = () =>

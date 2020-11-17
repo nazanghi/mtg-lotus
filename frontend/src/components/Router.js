@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 // import { SignInUser } from '../../../controllers/UserController' //gotta fix this
+import Nav from './Nav'
 import Home from '../pages/Home'
 import LandingPage from '../pages/LandingPage'
 import SignUp from '../pages/SignUp'
 import Layout from '../components/Layout'
-import Discover from '../pages/Discover'
+import ViewAllDecks from '../pages/ViewAllDecks'
 import SignInUser from '../pages/SignIn'
 import {__CheckSession, __GetProfile } from '../services/UserServices'
 import { __GetDecks } from '../services/DeckServices'
@@ -26,6 +27,7 @@ class Router extends Component {
             pageLoading: true,
             chosenDeck: null,
             decks: [],
+            wantsCreateDeck: false,
             deckFetchError: false
         }
     }
@@ -33,7 +35,6 @@ class Router extends Component {
     componentDidMount () {
         this.verifyTokenValid()
         this.setState({pageLoading: false})
-        this.chooseDeck()
     }
     
     verifyTokenValid = async () => {
@@ -57,35 +58,32 @@ class Router extends Component {
         }
     }
 
-    getDecks = async () => {
-        try {
-            console.log(this.props)
-            const profileData = await __GetProfile(this.state.currentUser._id)
-            this.setState({ decks: profileData.decks })
-        } catch(error) {console.log(error)}
-    }
 
-    chooseDeck = async () => {
-        try {
-            const chosenDeck = 
-                await __GetDecks()
-                console.log(`chooseDeck fires`)
-                this.setState(
-                    {
-                        chosenDeck: chosenDeck.deck
-                    },
-                    () => this.props.history.push('/Discover')
-                )
-        } catch(error){throw error}
-    }
 
     toggleAuthenticated = (value, user, done) => {
         this.setState({ authenticated: value, currentUser: user }, () => done())
     }
 
+    addDeck = (deck) => {
+        this.setState(prevState => ({
+            decks: [...prevState.decks, deck]
+        }))
+    }
+
+    chooseDeck = (deck) => {
+        console.log(deck)
+    }
+
+    toggleCreateDeck = (value) => this.setState({wantsCreateDeck:value})
+
+
+
     render () {
         return (
+            <div>
+                <Nav authenticated={this.state.authenticated} currentUser ={this.state.currentUser}/>
             <main>
+
                 {this.state.pageLoading ? (
                     <h4>Getting over Summoning Sickness...</h4>
                 ) : (
@@ -107,15 +105,14 @@ class Router extends Component {
                             )}
                         />
                         <Route 
-                            path = "/discover"
+                            path = "/decks"
                             component = {(props) => (
-                                <Layout
+
+                                    <ViewAllDecks wantsCreateDeck={this.state.wantsCreateDeck} decks={this.state.decks}
+                                    toggleCreateDeck={this.toggleCreateDeck}
                                     currentUser={this.state.currentUser}
-                                    authenticated={this.state.authenticated}
-                                    chosenDeck={this.state.chosenDeck}
-                                >
-                                <Discover {...props} />
-                                </Layout>
+                                    addDeck={this.addDeck}
+                                    chooseDeck={this.chooseDeck}/>
                             )}
                         />
                         <Route 
@@ -130,7 +127,7 @@ class Router extends Component {
                             )}
                         />
                         <Route
-                            path = "/profile"
+                            path = "/deck/:deck_id"
                             component = {(props) => (
                                 <LandingPage>
                                     <Profile
@@ -144,7 +141,8 @@ class Router extends Component {
                     
                     )
                 }
-            </main>
+                </main>
+            </div>
         )
     }
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import '../styles/Nav.css' 
-export default ({ currentUser, className }) => {
-    return currentUser 
+export default ({ authenticated,currentUser, className }) => {
+    return authenticated 
     ? (
         <header className={className}>
             <div className="icon">Welcome Back, {currentUser.name}</div>
@@ -12,13 +12,13 @@ export default ({ currentUser, className }) => {
                         Return Home
                 </NavLink>
                 <NavLink 
-                    activeClassName="nav-active" to="/profile">
+                    activeClassName="nav-active" to="/decks">
                         View Your Decks
                 </NavLink>
-                <NavLink 
+                {/* <NavLink 
                     activeClassName="nav-active" to="/Discover">
                         View All Cards
-                </NavLink>
+                </NavLink> */}
                 <NavLink 
                     activeClassName="nav-active" 
                     to="/"

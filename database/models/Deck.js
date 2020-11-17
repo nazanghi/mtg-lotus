@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose')
+const { Schema, Types } = require('mongoose')
 
 module.exports = new Schema (
     {
@@ -10,6 +10,9 @@ module.exports = new Schema (
             type: String,
             required: false
         },
-        cards: []
+        cards: [{
+            type: Types.ObjectId,
+            ref: 'cards'
+        }]
     }, {timestamps: true}
 )

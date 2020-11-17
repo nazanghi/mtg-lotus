@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Card from '../components/Card'
-import { __GetCards } from '../services/CardServices'
+import { __GetCards, __AddCardToDeck } from '../services/CardServices'
 import '../styles/Discover.css'
+import { __GetSingleDeck } from '../services/DeckServices'
 
 
 export default class Discover extends Component {
@@ -23,12 +24,22 @@ export default class Discover extends Component {
             this.setState({cards: [...this.state.cards, ...cards]})
         } catch (error) {throw error}
     }
-
+    
+    addCardToDeck = async (card) => {
+        try {
+            const deck = await __GetSingleDeck(deck) //lil fuzzy on that last part
+        this.setState(
+            (prevState) => ({deck: [...prevState.deck, card]})
+        )
+        } catch (error){throw error}
+    }
     incrementPage = () =>
         this.setState(
             (prevstate) => ({ currentPage: prevstate.currentPage ++ }),
             () => this.getAllCards()
         )
+
+
 
     render() {
         const { cards } = this.state
@@ -48,9 +59,12 @@ export default class Discover extends Component {
                                     <div className="mask flex-col discover">
                                         <div className="flex-col">
                                             <div className="card-content">
-                                                <img src={card.image_source} alt="dummy card using faker" className="dummy-mtg" />
+                                                {/* <img src={card.image_source} alt="dummy card using faker" className="dummy-mtg" /> */}
                                                 <h3>{card.title}</h3>
                                                 <p>{card.rules_text}</p>
+                                                <button
+                                                    onClick={()=>this.addCardToDeck(card)}
+                                                    >Add to Selected Deck</button>
                                             </div> 
                                         </div>
                                     </div>

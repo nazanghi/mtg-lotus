@@ -1,5 +1,4 @@
 const express = require('express')
-const { useParams } = require('react-router-dom')
 const {Deck, MTGCard, User} = require('../database/schema')
 
 const GetAllDecks = async (request, response) => {
@@ -24,8 +23,7 @@ const CreateDeck = async(request, response) => {
     const body = request.body
     const deck = new Deck({
         name: body.name,
-        description: body.description,
-        cards: []
+        description: body.description
     })
     deck.save()
     await User.findByIdAndUpdate(

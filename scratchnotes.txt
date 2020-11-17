@@ -6,4 +6,8 @@ Add a way to select a deck for cards to be added to
 
 Clean up CSS
 
-Diagnose error in DeckController>GetAllDecks
+Diagnose error in DeckController>GetAllDecks 
+
+props.history.push(request.params.deck_id)
+
+gotta grab the deck Id to then pass on for when I need to add cards to it 

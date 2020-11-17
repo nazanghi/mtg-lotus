@@ -48,12 +48,12 @@ export default class Discover extends Component {
                                     <div className="mask flex-col discover">
                                         <div className="flex-col">
                                             <div className="card-content">
+                                                <img src={card.image_source} alt="dummy card using faker" className="dummy-mtg" />
                                                 <h3>{card.title}</h3>
                                                 <p>{card.rules_text}</p>
                                             </div> 
                                         </div>
                                     </div>
-                                    <img src={card.image_source} alt="dummy card using faker" />
                                     
                                 </Card>
                                

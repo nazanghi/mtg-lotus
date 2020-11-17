@@ -34,17 +34,17 @@ const SignInUser = async (request, response, next) => {
         const user = await User.findOne({email: request.body.email})
         console.log('usertest'+user)
         if (user &&
-            (await checkPassword(request.body.password, user.password_digest))
+            (await (request.body.password, user.password_digest))
         ) 
-        console.log('works after line 38')
+        console.log('works after userController line 38', user)
         {
             const payload = {
                 _id: user._id,
                 name: user.name
             }
-            console.log('hits payload'+payload)
-            response.locals.payload = payload //kind of unclear here
-            console.log('hits payload response'+response.locals.payload)
+            console.log('hits payload', payload)
+            response.locals.payload = payload 
+            console.log('hits payload response', response)
             return next()
             
         }

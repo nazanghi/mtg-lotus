@@ -1,24 +1,24 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import '../styles/Nav.css' //gotta make the nav in css
+import '../styles/Nav.css' 
 export default ({ currentUser, className }) => {
     return currentUser 
     ? (
         <header className={className}>
-            <div className="icon">Welcome Back {currentUser.name}</div>
+            <div className="icon">Welcome Back, {currentUser.name}</div>
             <nav>
                 <NavLink 
-                    activeClassName="nav-active" to="/profile">
-                        Profile
+                    activeClassName="nav-active" to="/">
+                        View Your Decks
                 </NavLink>
                 <NavLink 
                     activeClassName="nav-active" to="/Discover">
-                        Need to create a discover page
+                        View All Cards
                 </NavLink>
-                <NavLink 
+                {/* <NavLink 
                     activeClassName="nav-active" to="/decks">
                         Your Decks
-                </NavLink>
+                </NavLink> */}
                 <NavLink 
                     activeClassName="nav-active" 
                     to="/"

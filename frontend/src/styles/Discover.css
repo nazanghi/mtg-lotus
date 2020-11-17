@@ -2,6 +2,7 @@
     margin: 1em auto;
 }
 
+
 .discover.wrapper h2{
     margin: .5em 1em;
     padding: 1em;
@@ -34,10 +35,13 @@
 .discover .content-wrapper .card {
     margin: 1em;
     min-width: 380px;
+    
 }
 
 .discover .card .card-content-top {
     justify-content: space-between;
+    max-height: 100px;
+    
 }
 
 .card .card-content-top .stats {

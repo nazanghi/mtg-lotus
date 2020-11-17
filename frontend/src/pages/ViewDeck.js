@@ -33,7 +33,7 @@ export default class ViewDeck extends Component {
                         </div>
                         <div className="right-content col-2 flex-col">
                             <div className="content-top">
-                                <h2>{deck.title}</h2>
+                                <h2>{deck.name}</h2>
                                 <p>{deck.description}</p>
                             </div>
                         </div>

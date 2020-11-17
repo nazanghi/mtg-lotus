@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { __GetProfile } from '../services/UserServices'
 import { __DeleteDeck } from '../services/DeckServices'
+import Card from '../components/Card'
 
 
 export default class Profile extends Component {
@@ -35,8 +36,26 @@ export default class Profile extends Component {
 
     selectDeck = async() => {
         try {
-            const selectedDeck= this.state.decks.filter((deck)=> deck._id ===id)
+            const selectedDeck= this.state.decks.findById() //need to tweak
             this.setState({chosenDeck: selectedDeck})
         } catch(error){throw error}
+    }
+
+
+    render(){
+        return(
+            
+            <section className="card-wrapper flex-row">
+            <p> this indicates that it works</p>
+                <Card>
+                    <div className ="mask flex-col">
+                        <div className= "card-content">
+                            <h3>{this.chosenDeck.name}</h3>
+                            <p>{this.chosenDeck.description}</p>
+                        </div>
+                    </div>
+                </Card>
+            </section> 
+        )
     }
 }

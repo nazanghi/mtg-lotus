@@ -10,6 +10,7 @@ export default class Discover extends Component {
         super()
         this.state = {
         cards: [],
+        chosenDeck: null,
         currentPage: 1
     }
 }
@@ -25,6 +26,7 @@ export default class Discover extends Component {
         } catch (error) {throw error}
     }
     
+
     addCardToDeck = async (card) => {
         try {
             const deck = await __GetSingleDeck(deck) //lil fuzzy on that last part

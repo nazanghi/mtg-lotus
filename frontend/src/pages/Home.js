@@ -15,9 +15,9 @@ export default () => {
                     />
                 </form>
                 <div className="discover flex-col">
-                    <h2>Discover</h2>
+                    <h2>Your Decks</h2>
                     <section className="card-wrapper flex-row">
-                        <Card>
+                        {/* <Card>
                             <div className="mask flex-col">
                                 <div className="card-content">
                                     <h3>Testing it out</h3>
@@ -52,7 +52,7 @@ export default () => {
                                 src=""
                                 alt=""
                             />
-                        </Card>
+                        </Card> */}
                     </section>
                 </div>
             </div>

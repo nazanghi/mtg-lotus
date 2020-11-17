@@ -2,7 +2,7 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const helmet = require('helmet') //not sure what this means yet
+const helmet = require('helmet') 
 const connection = require('./database/connection')
 const AppRouter = require('./routes/AppRouter')
 

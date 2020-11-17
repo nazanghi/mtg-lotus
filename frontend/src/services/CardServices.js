@@ -1,5 +1,4 @@
 // should look at the card component
-
 import ApiClient from './ApiClient'
 
 export const __GetCards = async (page, limit) => {
@@ -16,4 +15,17 @@ export const __GetSingleCard = async (cardId) => {
         const response = await ApiClient.get(`/mtgcards/${cardId}`)
         return response.data
     } catch (error) {throw error}
+}
+
+export const __AddCardToDeck = async (cardId, deckId) => {
+    try {
+        const response = await ApiClient.put(`/${deckId}/${cardId}`)
+        return response.data
+    } catch(error){throw error}
+}
+
+export const __RemoveCardFromDeck = async (cardId, deckId) => {
+    try {
+        const response = await ApiClient.delete(`/${deckId}/${cardId}`)
+    } catch(error){throw error}
 }

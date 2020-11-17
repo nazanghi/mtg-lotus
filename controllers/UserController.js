@@ -1,5 +1,5 @@
 const { User, Cart } = require('../database/schema')
-const { generatePassword } = require('../middleware/PasswordHandler')
+const { generatePassword, checkPassword } = require('../middleware/PasswordHandler')
 const jwt = require('jsonwebtoken')
 
 const GetProfile = async(request, response) => {
@@ -29,18 +29,24 @@ const CreateUser = async (request, response) => {
 }
 
 const SignInUser = async (request, response, next) => {
+    console.log(`SignInUser${request}`)
     try {
         const user = await User.findOne({email: request.body.email})
-
+        console.log('usertest'+user)
         if (user &&
             (await checkPassword(request.body.password, user.password_digest))
-        ) {
+        ) 
+        console.log('works after line 38')
+        {
             const payload = {
                 _id: user._id,
                 name: user.name
             }
+            console.log('hits payload'+payload)
             response.locals.payload = payload //kind of unclear here
+            console.log('hits payload response'+response.locals.payload)
             return next()
+            
         }
         response.status(401).send({ message: `Wrong Password, try again.`})
     } catch (error) {

@@ -11,3 +11,5 @@ export default ({ children, authenticated, currentUser }) => (
         {children}
     </div>
 )
+
+//should I throw in a chosenDeck here?

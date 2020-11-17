@@ -9,16 +9,16 @@ export default ({ currentUser, className }) => {
             <nav>
                 <NavLink 
                     activeClassName="nav-active" to="/">
+                        Return Home
+                </NavLink>
+                <NavLink 
+                    activeClassName="nav-active" to="/profile">
                         View Your Decks
                 </NavLink>
                 <NavLink 
                     activeClassName="nav-active" to="/Discover">
                         View All Cards
                 </NavLink>
-                {/* <NavLink 
-                    activeClassName="nav-active" to="/decks">
-                        Your Decks
-                </NavLink> */}
                 <NavLink 
                     activeClassName="nav-active" 
                     to="/"
@@ -33,7 +33,7 @@ export default ({ currentUser, className }) => {
             <div className="icon"></div>
             <nav>
                 <NavLink activeClassName="nav-active" to="/discover">
-                    Discover
+                    Browse Cards
                 </NavLink>
                 <NavLink activeClassName="nav-active" to="/register">
                     Sign Up

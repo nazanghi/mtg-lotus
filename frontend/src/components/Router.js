@@ -8,6 +8,11 @@ import Layout from '../components/Layout'
 import Discover from '../pages/Discover'
 import SignInUser from '../pages/SignIn'
 import {__CheckSession } from '../services/UserServices'
+import { __GetDecks } from '../services/DeckServices'
+import Profile from '../pages/Profile'
+
+//should import ViewAllDecks either here or in profile
+//I feel like here because I want to have it so you can view all your decks when you log in and create a deck
 //I need to add more imports as it goes along and I have more things in this
 
 class Router extends Component {
@@ -16,13 +21,15 @@ class Router extends Component {
         this.state = {
             authenticated: false,
             currentUser: null,
-            pageLoading: true
+            pageLoading: true,
+            chosenDeck: null
         }
     }
 
     componentDidMount () {
         this.verifyTokenValid()
         this.setState({pageLoading: false})
+        this.chooseDeck()
     }
 
     verifyTokenValid = async () => {
@@ -42,9 +49,21 @@ class Router extends Component {
                 this.setState({ currentUser: null, authenticated: false })
                 localStorage.clear()
             }
-            //This sends an API request to verify the token
-            // And if it's valid, the user 
         }
+    }
+
+    chooseDeck = async () => {
+        try {
+            const chosenDeck = 
+                await __GetDecks()
+                console.log(`chooseDeck fires`)
+                this.setState(
+                    {
+                        chosenDeck: chosenDeck.deck
+                    },
+                    () => this.props.history.push('/')
+                )
+        } catch(error){throw error}
     }
 
     toggleAuthenticated = (value, user, done) => {
@@ -80,6 +99,7 @@ class Router extends Component {
                                 <Layout
                                     currentUser={this.state.currentUser}
                                     authenticated={this.state.authenticated}
+                                    chosenDeck={this.state.chosenDeck}
                                 >
                                 <Discover {...props} />
                                 </Layout>
@@ -91,6 +111,16 @@ class Router extends Component {
                                 <LandingPage>
                                     <SignInUser 
                                         toggleAuthenticated={this.toggleAuthenticated}
+                                        {...props}
+                                    />
+                                </LandingPage>
+                            )}
+                        />
+                        <Route
+                            path = "/profile"
+                            component = {(props) => (
+                                <LandingPage>
+                                    <Profile
                                         {...props}
                                     />
                                 </LandingPage>

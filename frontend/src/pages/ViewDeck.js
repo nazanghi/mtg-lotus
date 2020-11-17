@@ -46,7 +46,8 @@ export default class ViewDeck extends Component {
                                 <p>this is a placeholder, you will have an image here</p>
                             </div>
                         </div>
-                        {/* I should map through the selected deck and return the cards in it as an unordered list */}
+                        {/* I should map through the selected deck and return the cards in it as an unordered list 
+                        each card will be able to have a "remove from deck" option*/}
                         <div className="right-content col-2 flex-col">
                             <div className="content-top">
                                 <h2>{deck.name}</h2>

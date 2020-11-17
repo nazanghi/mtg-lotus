@@ -28,3 +28,10 @@ export const __UpdateDeckInfo = async (formData, deckId) => {
         return response.data
     } catch (error){throw error}
 }
+
+export const __CreateDeck = async (formData, userId) => {
+    try {
+        const response = await ApiClient.post(`/decks/${userId}/?active=true`, formData)
+        return response.data
+    } catch (error){throw error}
+}

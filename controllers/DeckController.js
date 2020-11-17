@@ -3,12 +3,15 @@ const { useParams } = require('react-router-dom')
 const {Deck, MTGCard, User} = require('../database/schema')
 
 const GetAllDecks = async (request, response) => {
+    try {
     const {page, limit } = request.query
-    const offset = page ==='1' ? 0 : Math.floor(parseInt(page) * parseInt(limit))
+    const offset = 
+        page === '1' ? 0 : Math.floor(parseInt(page) * parseInt(limit))
     .limit(parseInt(limit))
     .skip(offset)
     const displayDecks = await Deck.find()
     response.send({results: displayDecks.length, decks})
+    } catch (error) {throw error}
 }
 
 const GetDeck = async (request, response) => {

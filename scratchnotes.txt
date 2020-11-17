@@ -1,19 +1,9 @@
 For now I'm going to use this as a to-do list
 
+Need to clean up Decks to have add/remove/update in profile 
 
-Add multiple functions to Cart Controller
-Review MTGCardController and DeckController to ensure I have all necessary functions
-Add Services relevant to MTGCard and Deck
+Add a way to select a deck for cards to be added to
 
-Currently thinking I should eliminate Cart
-    And make "export to TCG" and "export to MTGA" options
+Clean up CSS
 
-
-Add the readme
-
-
-Thread the third party API to replace the seed.js
-
-
-
-Add a shuffle function (this is stretch at this point, but not impossible)
+Diagnose error in DeckController>GetAllDecks

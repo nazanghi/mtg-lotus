@@ -23,7 +23,7 @@ export default class ViewAllDecks extends Component {
     }
 
     render() {
-        //I need to map through it and fill
+        //I need to map through it and fill it with all of the values of the user's decks
         const {decks} = this.state
         if (this.state.decks) {
             return (

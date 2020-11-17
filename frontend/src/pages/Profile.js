@@ -44,6 +44,9 @@ export default class Profile extends Component {
 
     render(){
         return(
+            // I need to map through a user's decks to return them all to there
+            //and set it as a ternary
+            //so if they don't have any decks it tells them, and then prompts them to create one
             
             <section className="card-wrapper flex-row">
             <p> this indicates that it works</p>

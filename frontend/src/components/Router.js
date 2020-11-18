@@ -12,6 +12,7 @@ import {__CheckSession, __GetProfile } from '../services/UserServices'
 import { __GetDecks } from '../services/DeckServices'
 import Profile from '../pages/Profile'
 import CreateDeck from '../pages/CreateDeck'
+import Discover from '../pages/Discover'
 
 
 //should import ViewAllDecks either here or in profile
@@ -70,8 +71,18 @@ class Router extends Component {
         }))
     }
 
+    getDecks = () =>{
+        this.setState(prevState=>({
+            decks: [...prevState.decks]
+        }))
+    }
+
     chooseDeck = (deck) => {
-        console.log(deck)
+        try {
+            const selectedDeck = this.state.findById(deck)
+            this.setState({chosenDeck: selectedDeck})
+            console.log('choosedeck works',selectedDeck)
+        } catch(error){throw error}
     }
 
     toggleCreateDeck = (value) => this.setState({wantsCreateDeck:value})
@@ -114,6 +125,16 @@ class Router extends Component {
                                     addDeck={this.addDeck}
                                     chooseDeck={this.chooseDeck}/>
                             )}
+    
+                        />                            
+                        <Route
+                            path = "/discover"
+                            component= {(props) => (
+
+                                <Discover
+                                    {...props}
+                                />
+                            )} //this route's gotta get fixed up
                         />
                         <Route 
                             exact path = "/login"

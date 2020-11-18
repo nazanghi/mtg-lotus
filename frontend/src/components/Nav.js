@@ -15,10 +15,10 @@ export default ({ authenticated,currentUser, className }) => {
                     activeClassName="nav-active" to="/decks">
                         View Your Decks
                 </NavLink>
-                {/* <NavLink 
+                <NavLink 
                     activeClassName="nav-active" to="/Discover">
                         View All Cards
-                </NavLink> */}
+                </NavLink>
                 <NavLink 
                     activeClassName="nav-active" 
                     to="/"

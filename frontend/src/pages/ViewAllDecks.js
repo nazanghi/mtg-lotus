@@ -22,6 +22,9 @@ const ViewAllDecks = (props) => {
 <h4>{deck.name}</h4>
 <p>{deck.description}</p>
 <button onClick={()=>props.chooseDeck(deck)}>Manage</button>
+<button>Delete /gotta make it/</button>
+<button>Edit /gotta make it/</button>
+<button>View Cards /gotta make it/</button>
             </Card>)}
         </div>
         </div>

@@ -18,8 +18,8 @@ export default class ViewDeck extends Component {
 
     getDeck = async() => {
         try {
+            console.log(`checking deck singular`, deck)
             const deck = await __GetSingleDeck(this.props.match.params.deck_id)
-            console.log(`checking deck singular `, deck)
         } catch (error) {throw error, console.log(error)}
     }
 

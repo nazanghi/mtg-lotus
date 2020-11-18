@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import ViewAllDecks from '../pages/ViewAllDecks'
 import SignInUser from '../pages/SignIn'
 import {__CheckSession, __GetProfile } from '../services/UserServices'
-import { __GetDecks } from '../services/DeckServices'
+import { __GetDecks, __GetSingleDeck } from '../services/DeckServices'
 import Profile from '../pages/Profile'
 import CreateDeck from '../pages/CreateDeck'
 import Discover from '../pages/Discover'
@@ -29,7 +29,8 @@ class Router extends Component {
             chosenDeck: null,
             decks: [],
             wantsCreateDeck: false,
-            deckFetchError: false
+            deckFetchError: false,
+            wantsEditDeck: false
         }
     }
 
@@ -79,15 +80,23 @@ class Router extends Component {
 
     chooseDeck = (deck) => {
         try {
-            const selectedDeck = this.state.findById(deck)
+            console.log('chooseDeck, deck is', deck)
+            const selectedDeck = __GetSingleDeck(deck._id)
             this.setState({chosenDeck: selectedDeck})
             console.log('choosedeck works',selectedDeck)
         } catch(error){throw error}
     }
 
+    // deleteDeck = async () =>{
+    //     try {
+    //         this.setState
+    //     }
+    // }
+
+
     toggleCreateDeck = (value) => this.setState({wantsCreateDeck:value})
 
-
+    toggleEditDeck = (value) => this.setState({wantsEditDeck:value})
 
     render () {
         return (
@@ -121,6 +130,7 @@ class Router extends Component {
 
                                     <ViewAllDecks wantsCreateDeck={this.state.wantsCreateDeck} decks={this.state.decks}
                                     toggleCreateDeck={this.toggleCreateDeck}
+                                    toggleEditDeck={this.toggleEditDeck}
                                     currentUser={this.state.currentUser}
                                     addDeck={this.addDeck}
                                     chooseDeck={this.chooseDeck}/>

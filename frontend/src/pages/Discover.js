@@ -29,7 +29,7 @@ export default class Discover extends Component {
 
     addCardToDeck = async (card) => {
         try {
-            this.props.addCardToDeck(card)            
+            this.props.history.push(card)            
         } catch (error){throw error}
     }
     incrementPage = () =>

@@ -41,7 +41,7 @@ const RenameDeck = async (request, response) => {
         {
             ...request.body
         },
-        {new: true, useFindAndModify: false}, //not sure what this part means
+        {new: true, useFindAndModify: false},
         (error, (title)=> (error ? error : response.send(title))
         )
     )

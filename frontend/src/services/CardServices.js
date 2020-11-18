@@ -19,7 +19,7 @@ export const __GetSingleCard = async (cardId) => {
 
 export const __AddCardToDeck = async (cardId, deckId) => {
     try {
-        const response = await ApiClient.put(`/${deckId}/${cardId}`)
+        const response = await ApiClient.post(`/${deckId}/${cardId}`)
         return response.data
     } catch(error){throw error}
 }

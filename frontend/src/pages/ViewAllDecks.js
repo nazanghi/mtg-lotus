@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { __GetDecks } from '../services/DeckServices'
+import { __GetDecks, __DeleteDeck, __UpdateDeckInfo } from '../services/DeckServices'
 import CreateDeck from './CreateDeck'
 import Card from '../components/Card'
 const ViewAllDecks = (props) => {
@@ -14,6 +14,17 @@ const ViewAllDecks = (props) => {
                     addDeck={props.addDeck} 
                     toggleCreateDeck={props.toggleCreateDeck} 
                     currentUser={props.currentUser}
+                    toggleEditDeck={props.toggleEditDeck}
+                /> 
+                : null }
+        </div>
+        <div>
+            {props.wantsEditDeck ? 
+                <CreateDeck 
+                    addDeck={props.addDeck} 
+                    // toggleCreateDeck={props.toggleCreateDeck}
+                    currentUser={props.currentUser}
+                    toggleEditDeck={props.toggleEditDeck}
                 /> 
                 : null }
         </div>
@@ -22,8 +33,8 @@ const ViewAllDecks = (props) => {
 <h4>{deck.name}</h4>
 <p>{deck.description}</p>
 <button onClick={()=>props.chooseDeck(deck)}>Manage</button>
-<button>Delete /gotta make it/</button>
-<button>Edit /gotta make it/</button>
+{/* <button onClick={()=>}>Delete</button> */}
+<button onClick={()=>props.toggleEditDeck(true)}>Edit</button>
 <button>View Cards /gotta make it/</button>
             </Card>)}
         </div>
